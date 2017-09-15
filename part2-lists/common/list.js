@@ -1,26 +1,13 @@
 const Node = require('./node');
 
 function create(data) {
-    let rootNode = null,
-        lastNode = null;
-    data.forEach(item => {
-        let node = new Node(item);
-        if(!rootNode) {
-            rootNode = node;
-        } else {
-            lastNode.next = node;
-        }
-        lastNode = node;
-    });
-    return rootNode;
-}
-
-function traverse(list, callback) {
-    let node = list;
-    while(node) {
-        callback(node.value);
-        node = node.next;
+    let head = new Node(data[0]),
+        tail = head;
+    for(let i = 1; i < data.length; i++) {
+        tail.next = new Node(data[i]);
+        tail = tail.next;
     }
+    return head;
 }
 
 function flatten(list) {
@@ -33,9 +20,13 @@ function flatten(list) {
     return array;
 }
 
-function deleteMiddleNode(node) {
-    node.value = node.next.value;
-    node.next = node.next.next;
+function addNode(head, addNode) {
+    let node = head;
+    while(node.next) {
+        node = node.next;
+    }
+    node.next = addNode;
+    return head;
 }
 
 function deleteNode(head, removeNode) {
@@ -53,4 +44,4 @@ function deleteNode(head, removeNode) {
     return head;
 }
 
-module.exports = {create, traverse, flatten, deleteNode, deleteMiddleNode};
+module.exports = {create, flatten, addNode, deleteNode};
