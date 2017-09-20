@@ -16,14 +16,8 @@ class Queue {
     }
 
     isEmpty() {
-        return this.items.length > 0;
+        return this.items.length === 0;
     }
 }
 
-function createQueue(items) {
-    let stack = new Queue();
-    items.forEach(item => stack.add(item));
-    return stack;
-}
-
-module.exports = {Queue, createQueue};
+module.exports = Queue;
