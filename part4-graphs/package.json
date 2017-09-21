@@ -1,0 +1,17 @@
+{
+  "name": "part4-graphs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint-plugin-mocha": "^4.11.0",
+    "mocha": "^3.5.3",
+    "should": "^13.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
