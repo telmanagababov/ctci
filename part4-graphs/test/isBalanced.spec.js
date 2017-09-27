@@ -8,7 +8,12 @@ describe('isBalanced', function() {
   beforeEach(function() {
     tree = new BinaryTree();
   })
-  it('should bet "TRUE" for balanced tree', function() {
+  it('should be "TRUE" if balanced tree', function() {
+    /* Tree
+          10
+        5   15
+       2 7
+    */
     tree.add(10);
     tree.add(5);
     tree.add(15);
@@ -16,7 +21,13 @@ describe('isBalanced', function() {
     tree.add(7);
     isBalanced(tree).should.be.exactly(true);
   });
-  it('should be "FALSE" for imbalanced tree', function() {
+  it('should be "FALSE" if imbalanced tree', function() {
+    /* Tree
+                10
+             5       15
+          2    7
+       1
+    */
     tree.add(10);
     tree.add(5);
     tree.add(15);
