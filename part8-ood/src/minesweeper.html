@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Minesweaper</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #game {
+            display: none;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        #field {
+            padding: 4px;
+            border: 2px solid;
+        }
+
+        #field.disabled {
+            opacity: 0.25;
+        }
+
+        .control {
+            padding: 4px;
+        }
+
+        .control label {
+            padding: 0 20px;
+        }
+
+        .control input {
+            padding: 2px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .cell {
+            border: 2px solid;
+            margin: 2px;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .cell.empty {
+            background: #ccc;
+        }
+
+        .cell.bomb {
+            background: #f00;
+        }
+
+        .cell.assumption {
+            background: #ff0;
+        }
+
+        .cell.number {
+            background: #eee;
+        }
+
+        #info {
+            font-size: 40px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            height: 91px;
+            text-shadow: 2px 2px 4px #ccc;
+            font-weight: bold;
+        }
+        #info.win {
+            color: #a33548;
+        }
+        #info.loose {
+            color: #426386;
+        }
+
+        .disabled {
+            pointer-events: none !important;
+            cursor: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section id="controls">
+            <div class="control">
+                <label for="game-size">field size:</label>
+                <input id="game-size" type="number" value="6">
+            </div>
+            <div class="control">
+                <label for="minse-number">mines number:</label>
+                <input id="mines-number" type="number" value="4">
+            </div>
+            <div class="control">
+                <button onclick="startGame()">start</button>
+            </div>
+        </section>
+        <section id="game">
+            <section id="info"></section>
+            <section id="field"></section>
+        </section>
+    </main>
+</body>
+<script src="minesweeper.js"></script>
+<script>
+    let gameElement = document.querySelector('#game'),
+        game = new Minesweaper(gameElement);
+
+    function startGame() {
+        let size = document.querySelector("#game-size").value,
+            mines = document.querySelector("#mines-number").value;
+        game.start(parseInt(size), parseInt(mines));
+    }
+</script>
+
+</html>
